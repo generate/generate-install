@@ -82,9 +82,9 @@ If you do not see one or both of those events, please [let us know about it](../
 
 ## Tasks
 
-### [install:prompt-install](generator.js#L44)
+### [prompt-install](generator.js#L44)
 
-Prompt to install any `dependencies` or `devDependencies` after rendering or writing files. By default this only that were detected in front-matter. _(this task is named this way to make it easy to use programatically by other generators)_.
+Prompt to install any `dependencies` or `devDependencies` after writing files to the file system. By default this only installs deps that were found in front-matter. _(this task is named this way to make it easy to use programatically by other generators)_.
 
 **Example**
 
