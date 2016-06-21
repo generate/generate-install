@@ -1,0 +1,21 @@
+{
+  "name": "test",
+  "version": "0.0.1",
+  "repository": "generate/generate-install",
+  "bugs": {
+    "url": "https://github.com/generate/generate-install/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "utils.js"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "private": true
+}
