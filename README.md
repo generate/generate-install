@@ -6,11 +6,9 @@ Generator that automatically detects the dependencies or devDependencies to inst
 
 - [What is generate?](#what-is-generate)
 - [Usage](#usage)
+- [CLI](#cli)
 - [Tasks](#tasks)
-- [Docs](#docs)
-  * [CLI](#cli)
-  * [Tasks](#tasks-1)
-  * [API](#api)
+- [API](#api)
 - [Related projects](#related-projects)
 - [Contributing](#contributing)
 - [Building docs](#building-docs)
@@ -44,31 +42,7 @@ module.exports = function(app) {
 
 See the [generate docs](https://github.com/generate/generate) for more details.
 
-## Tasks
-
-### [install:prompt-install](generator.js#L44)
-
-Prompt to install any `dependencies` or `devDependencies` after rendering or writing files. By default this only that were detected in front-matter. _(this task is named this way to make it easy to use programatically by other generators)_.
-
-**Example**
-
-```sh
-$ gen install:prompt-install
-```
-
-### [install](generator.js#L57)
-
-Automatically install any `dependencies` or `devDependencies` after writing files to the file system. By default this only installs deps that were found in front-matter.
-
-**Example**
-
-```sh
-$ gen install
-```
-
-## Docs
-
-### CLI
+## CLI
 
 **Installing the CLI**
 
@@ -106,7 +80,29 @@ If completed successfully, you should see both `starting` and `finished` events 
 
 If you do not see one or both of those events, please [let us know about it](../../issues).
 
-### API
+## Tasks
+
+### [install:prompt-install](generator.js#L44)
+
+Prompt to install any `dependencies` or `devDependencies` after rendering or writing files. By default this only that were detected in front-matter. _(this task is named this way to make it easy to use programatically by other generators)_.
+
+**Example**
+
+```sh
+$ gen install:prompt-install
+```
+
+### [install](generator.js#L57)
+
+Automatically install any `dependencies` or `devDependencies` after writing files to the file system. By default this only installs deps that were found in front-matter.
+
+**Example**
+
+```sh
+$ gen install
+```
+
+## API
 
 This updater can also be used as a node.js library in your own updater. To do so you must first install generate-install locally.
 
