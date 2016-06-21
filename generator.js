@@ -18,12 +18,13 @@ module.exports = function(app) {
       next();
       return;
     }
+
     if (utils.isObject(file.data.install)) {
       for (var type in file.data.install) {
-        app.union(['cache.install', type], utils.arrayify(file.data.install[type]));
+        app.base.union(['cache.install', type], utils.arrayify(file.data.install[type]));
       }
     } else {
-      app.union('cache.install.devDependencies', utils.arrayify(file.data.install));
+      app.base.union('cache.install.devDependencies', utils.arrayify(file.data.install));
     }
     next();
   });
@@ -65,7 +66,7 @@ module.exports = function(app) {
 
 function install(app, prompt) {
   return function(cb) {
-    var types = app.get('cache.install') || {};
+    var types = app.base.get('cache.install') || {};
     if (typeof types === 'undefined') {
       cb();
       return;
