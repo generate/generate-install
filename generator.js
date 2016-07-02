@@ -5,9 +5,12 @@ var utils = require('./utils');
 module.exports = function(app) {
   if (!utils.isValid(app, 'generate-install'));
 
-  app.use(utils.npm());
-  app.use(utils.pkg());
+  /**
+   * Plugins
+   */
+
   app.use(require('generate-collections'));
+  app.use(require('generate-defaults'));
 
   /**
    * Middleware to get `install` objects from front-matter
@@ -66,6 +69,17 @@ module.exports = function(app) {
 
 function install(app, prompt) {
   return function(cb) {
+    if (app.options.install === false || app.enabled('skip-install')) {
+      cb();
+      return;
+    }
+
+    if (!utils.exists(path.resolve(app.cwd, 'package.json'))) {
+      app.log.error('package.json does not exist, cannot install dependencies');
+      cb();
+      return;
+    }
+
     var types = app.base.get('cache.install') || {};
     if (typeof types === 'undefined') {
       cb();
@@ -85,6 +99,7 @@ function install(app, prompt) {
       }
 
       if (prompt === true) {
+        app.log.success('installing', names);
         app.npm.askInstall(names, {method: type, type: type}, next);
       } else {
         app.npm[type](names, next);

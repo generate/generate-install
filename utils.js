@@ -9,9 +9,8 @@ require = utils;
  */
 
 require('async-each-series', 'eachSeries');
-require('base-npm', 'npm');
-require('base-pkg', 'pkg');
 require('extend-shallow', 'extend');
+require('fs-exists-sync', 'exists');
 require('is-valid-app', 'isValid');
 require('isobject', 'isObject');
 require('parser-front-matter', 'parser');

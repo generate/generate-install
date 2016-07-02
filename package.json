@@ -12,6 +12,8 @@
   "files": [
     "generator.js",
     "index.js",
+    "LICENSE",
+    "README.md",
     "utils.js"
   ],
   "main": "index.js",
@@ -23,10 +25,10 @@
   },
   "dependencies": {
     "async-each-series": "^1.1.0",
-    "base-npm": "^0.4.0",
-    "base-pkg": "^0.2.4",
     "extend-shallow": "^2.0.1",
+    "fs-exists-sync": "^0.1.0",
     "generate-collections": "^0.3.1",
+    "generate-defaults": "^0.3.1",
     "is-valid-app": "^0.1.1",
     "isobject": "^2.1.0",
     "lazy-cache": "^2.0.1",
@@ -40,22 +42,58 @@
     "npm-install-global": "^0.1.2"
   },
   "keywords": [
+    "app",
+    "boilerplate",
+    "build",
+    "cli",
+    "cli-app",
+    "command-line",
+    "create",
+    "dev",
+    "development",
+    "framework",
+    "front",
+    "frontend",
     "generate",
+    "generategenerator",
     "generateplugin",
     "generator",
+    "init",
+    "initialize",
     "install",
+    "new",
     "npm",
-    "plugin"
+    "plugin",
+    "project",
+    "projects",
+    "scaffold",
+    "scaffolder",
+    "scaffolding",
+    "template",
+    "templates",
+    "tool",
+    "web",
+    "webapp",
+    "yeoman",
+    "yo"
   ],
   "verb": {
-    "toc": true,
-    "layout": "generator",
+    "toc": false,
+    "layout": "common-minimal",
     "tasks": [
       "readme"
     ],
     "plugins": [
       "gulp-format-md"
     ],
+    "related": {
+      "list": [
+        "generate-eslint",
+        "generate-license",
+        "generate-package",
+        "generate-travis"
+      ]
+    },
     "reflinks": [
       "generate",
       "verb",
