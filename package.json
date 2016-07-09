@@ -1,6 +1,6 @@
 {
   "name": "generate-install",
-  "description": "Generator that automatically detects the dependencies or devDependencies to install based on the templates or includes used. This can be used as a sub-generator or plugin in your own generator.",
+  "description": "Generator that automatically detects the dependencies or devDependencies to install based on the templates or includes that are dynamically used by your generator. This can be used as a sub-generator or plugin in your own generator.",
   "version": "0.1.5",
   "homepage": "https://github.com/generate/generate-install",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
@@ -10,7 +10,6 @@
   },
   "license": "MIT",
   "files": [
-    "generator.js",
     "index.js",
     "LICENSE",
     "README.md",
@@ -29,6 +28,7 @@
     "fs-exists-sync": "^0.1.0",
     "generate-collections": "^0.3.1",
     "generate-defaults": "^0.3.1",
+    "get-value": "^2.0.6",
     "is-valid-app": "^0.1.1",
     "isobject": "^2.1.0",
     "lazy-cache": "^2.0.1",
@@ -55,6 +55,8 @@
     "front",
     "frontend",
     "generate",
+    "generate-generator",
+    "generate-plugin",
     "generategenerator",
     "generateplugin",
     "generator",
@@ -95,12 +97,12 @@
       ]
     },
     "reflinks": [
-      "generate",
-      "verb",
-      "verb-readme-generator",
-      "gulp",
+      "assemble",
       "base",
-      "assemble"
+      "generate",
+      "gulp",
+      "verb",
+      "verb-readme-generator"
     ],
     "lint": {
       "reflinks": true

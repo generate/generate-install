@@ -1,6 +1,6 @@
 # generate-install [![NPM version](https://img.shields.io/npm/v/generate-install.svg?style=flat)](https://www.npmjs.com/package/generate-install) [![NPM downloads](https://img.shields.io/npm/dm/generate-install.svg?style=flat)](https://npmjs.org/package/generate-install) [![Build Status](https://img.shields.io/travis/generate/generate-install.svg?style=flat)](https://travis-ci.org/generate/generate-install)
 
-Generator that automatically detects the dependencies or devDependencies to install based on the templates or includes used. This can be used as a sub-generator or plugin in your own generator.
+Generator that automatically detects the dependencies or devDependencies to install based on the templates or includes that are dynamically used by your generator. This can be used as a sub-generator or plugin in your own generator.
 
 ## What is "Generate"?
 
@@ -108,6 +108,26 @@ gen foo install
 ```
 
 ## Tasks
+
+### [prompt-install](index.js#L49)
+
+Prompt to install any `dependencies` or `devDependencies` after writing files to the file system. By default this only installs deps that were found in front-matter. _(this task is named this way to make it easy to use programatically by other generators)_.
+
+**Example**
+
+```sh
+$ gen install:prompt-install
+```
+
+### [install](index.js#L62)
+
+Automatically install any `dependencies` or `devDependencies` after writing files to the file system. By default this only installs deps that were found in front-matter.
+
+**Example**
+
+```sh
+$ gen install
+```
 
 Visit Generate's [task documentation](https://github.com/generate/generate/blob/master/docs/){tasks.md}.
 
