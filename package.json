@@ -1,7 +1,7 @@
 {
   "name": "generate-install",
   "description": "Generator that automatically detects the dependencies or devDependencies to install based on the templates or includes used. This can be used as a sub-generator or plugin in your own generator.",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "homepage": "https://github.com/generate/generate-install",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "generate/generate-install",
@@ -97,7 +97,10 @@
     "reflinks": [
       "generate",
       "verb",
-      "verb-readme-generator"
+      "verb-readme-generator",
+      "gulp",
+      "base",
+      "assemble"
     ],
     "lint": {
       "reflinks": true
