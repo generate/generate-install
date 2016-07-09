@@ -11,6 +11,7 @@ require = utils;
 require('async-each-series', 'eachSeries');
 require('extend-shallow', 'extend');
 require('fs-exists-sync', 'exists');
+require('get-value', 'get');
 require('is-valid-app', 'isValid');
 require('isobject', 'isObject');
 require('parser-front-matter', 'parser');
@@ -28,8 +29,8 @@ utils.arrayify = function(val) {
  * Remove names that are already listed in `package.json`
  */
 
-utils.unique = function(app, type, keys) {
-  var names = utils.arrayify(Object.keys(app.pkg.get(type) || {}));
+utils.unique = function(pkg, type, keys) {
+  var names = utils.arrayify(Object.keys(utils.get(pkg, type) || {}));
   return utils.arrayify(keys).filter(function(name) {
     return names.indexOf(name) === -1;
   });
