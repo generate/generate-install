@@ -1,7 +1,7 @@
 {
   "name": "generate-install",
   "description": "Generator that automatically detects the dependencies or devDependencies to install based on the templates or includes that are dynamically used by your generator. This can be used as a sub-generator or plugin in your own generator.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "homepage": "https://github.com/generate/generate-install",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "generate/generate-install",
