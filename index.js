@@ -3,7 +3,7 @@
 var path = require('path');
 var utils = require('./utils');
 
-module.exports = function(app) {
+module.exports = function(app, base, env) {
   if (!utils.isValid(app, 'generate-install'));
 
   /**
@@ -17,36 +17,41 @@ module.exports = function(app) {
    * Middleware to get `install` objects from front-matter
    */
 
-  app.postWrite(/./, function(file, next) {
-    if (typeof file.data === 'undefined' || typeof file.data.install === 'undefined') {
-      next();
-      return;
-    }
-
-    if (utils.isObject(file.data.install)) {
-      for (var type in file.data.install) {
-        app.base.union(['cache.install', type], utils.arrayify(file.data.install[type]));
+  if (!skipInstall(app)) {
+    app.postWrite(/./, function(file, next) {
+      // check again, in case options were updated
+      if (!skipInstall(app)) {
+        next();
+        return;
       }
-    } else {
-      app.base.union('cache.install.devDependencies', utils.arrayify(file.data.install));
-    }
-    next();
-  });
+
+      if (typeof file.data === 'undefined' || typeof file.data.install === 'undefined') {
+        next();
+        return;
+      }
+
+      if (utils.isObject(file.data.install)) {
+        for (var type in file.data.install) {
+          app.base.union(['cache.install', type], utils.arrayify(file.data.install[type]));
+        }
+      } else {
+        app.base.union('cache.install.devDependencies', utils.arrayify(file.data.install));
+      }
+      next();
+    });
+  }
 
   /**
-   * Prompt to install any `dependencies` or `devDependencies` after writing files to
-   * the file system. By default this only installs deps that were found in front-matter.
-   * _(this task is named this way to make it easy to use programatically by other
-   * generators)_.
+   * Initiates a prompt to install any dependencies detected during the build.
    *
    * ```sh
-   * $ gen install:prompt-install
+   * $ gen install
    * ```
-   * @name prompt-install
+   * @name default
    * @api public
    */
 
-  app.task('prompt-install', install(app, true));
+  app.task('default', ['prompt-install']);
 
   /**
    * Automatically install any `dependencies` or `devDependencies` after writing files to
@@ -62,21 +67,37 @@ module.exports = function(app) {
   app.task('install', install(app));
 
   /**
-   * Default task
+   * Prompt to install any `dependencies` or `devDependencies` after writing files to
+   * the file system. By default this only installs deps that were found in front-matter.
+   * This task is semantically named for API usage.
+   *
+   * ```sh
+   * $ gen install:prompt-install
+   * ```
+   * @name prompt-install
+   * @api public
    */
 
-  app.task('default', ['prompt-install']);
+  app.task('prompt-install', install(app, true));
 };
 
+function skipInstall(app) {
+  var opts = getOptions(app);
+  return opts.install === false || opts['skip-install'] === true;
+}
+
+function getOptions(app) {
+  return utils.extend({}, app.options, app.option('generator.install'));
+}
+
 function install(app, prompt) {
-  var cwd = app.options.dest || app.cwd;
   return function(cb) {
-    if (app.options.install === false || app.enabled('skip-install')) {
+    if (skipInstall(app)) {
       cb();
       return;
     }
 
-    if (!utils.exists(path.resolve(cwd, 'package.json'))) {
+    if (!utils.exists(path.resolve(process.cwd(), 'package.json'))) {
       app.log.error('package.json does not exist, cannot install dependencies');
       cb();
       return;

@@ -9,6 +9,7 @@ require = utils;
  */
 
 require('async-each-series', 'eachSeries');
+require('data-store', 'DataStore');
 require('extend-shallow', 'extend');
 require('fs-exists-sync', 'exists');
 require('get-value', 'get');
