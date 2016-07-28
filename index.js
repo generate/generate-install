@@ -10,7 +10,6 @@ module.exports = function(app, base, env) {
    * Plugins
    */
 
-  app.use(require('generate-collections'));
   app.use(require('generate-defaults'));
 
   /**

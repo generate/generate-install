@@ -15,7 +15,6 @@ require('fs-exists-sync', 'exists');
 require('get-value', 'get');
 require('is-valid-app', 'isValid');
 require('isobject', 'isObject');
-require('parser-front-matter', 'parser');
 require = fn;
 
 /**

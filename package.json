@@ -1,7 +1,7 @@
 {
   "name": "generate-install",
   "description": "Generator that automatically detects the dependencies or devDependencies to install based on the templates or includes that are dynamically used by your generator. This can be used as a sub-generator or plugin in your own generator.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "homepage": "https://github.com/generate/generate-install",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "generate/generate-install",
@@ -27,13 +27,11 @@
     "data-store": "^0.16.1",
     "extend-shallow": "^2.0.1",
     "fs-exists-sync": "^0.1.0",
-    "generate-collections": "^0.3.5",
     "generate-defaults": "^0.4.2",
     "get-value": "^2.0.6",
     "is-valid-app": "^0.2.0",
     "isobject": "^2.1.0",
-    "lazy-cache": "^2.0.1",
-    "parser-front-matter": "^1.4.1"
+    "lazy-cache": "^2.0.1"
   },
   "devDependencies": {
     "delete": "^0.3.2",
