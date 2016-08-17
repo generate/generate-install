@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "files": [
+    "generator.js",
     "index.js",
     "LICENSE",
     "README.md",
@@ -27,7 +28,7 @@
     "data-store": "^0.16.1",
     "extend-shallow": "^2.0.1",
     "fs-exists-sync": "^0.1.0",
-    "generate-defaults": "^0.5.0",
+    "generate-defaults": "^0.6.0",
     "get-value": "^2.0.6",
     "is-valid-app": "^0.2.0",
     "isobject": "^2.1.0",
