@@ -18,8 +18,9 @@ module.exports = function(app, base, env) {
 
   if (!skipInstall(app)) {
     app.postWrite(/./, function(file, next) {
+
       // check again, in case options were updated
-      if (!skipInstall(app)) {
+      if (skipInstall(app)) {
         next();
         return;
       }
