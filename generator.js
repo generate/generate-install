@@ -78,6 +78,7 @@ module.exports = function(app, base, env) {
    * @api public
    */
 
+  app.task('prompt', ['prompt-install']);
   app.task('prompt-install', install(app, true));
 };
 
