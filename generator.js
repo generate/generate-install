@@ -4,7 +4,9 @@ var path = require('path');
 var utils = require('./utils');
 
 module.exports = function(app, base, env) {
-  if (!utils.isValid(app, 'generate-install'));
+  if (!utils.isValid(app, 'generate-install')) {
+    return;
+  }
 
   /**
    * Plugins
